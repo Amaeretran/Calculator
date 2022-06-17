@@ -1,11 +1,7 @@
 class Translate {
-
-
-
     boolean isRome(String income){
         return income.charAt(0) == 'I' || income.charAt(0) == 'V' || income.charAt(0) == 'X';
     }
-
     String translateToRome(int value){
 
         String result = "";
@@ -45,7 +41,7 @@ class Translate {
         }
         return  result;
     }
-     int romeToArabian(String operand) {
+     int romeToArabian(String operand) throws Exception {
         int result = switch (operand){
             case "I" -> 1;
             case "II" -> 2;
@@ -57,7 +53,7 @@ class Translate {
             case "VIII" -> 8;
             case "IX" -> 9;
             case "X" -> 10;
-            default -> 0;
+            default -> throw new Exception("Принимаются числа только в диапазоне от 1 до 10");
         };
         return result;
     }

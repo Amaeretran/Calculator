@@ -1,7 +1,8 @@
+
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         System.out.println("""
                 Добро пожаловать в простой калькулятор!
                 Здесь Вы можете производить арифметические '+,-,*,/' операции над
@@ -27,7 +28,7 @@ public class Main {
        }
        System.out.println("Хорошего дня!");
     }
-    public static String calc(String income){
+    public static String calc(String income) throws Exception {
 
         IfInputCorrect input = new IfInputCorrect();
         if (input.check(income)){
@@ -35,12 +36,12 @@ public class Main {
             int result = calculate.calculate(income);
             Translate translator = new Translate();
             if (translator.isRome(income)){
-                if (result <= 0) return "Римские цифры не могут быть отрицательными или равными '0'!\n" + "Повторите ввод";
+                if (result <= 0) throw new Exception("Римские цифры не могут быть отрицательными или равными '0'!\n");
                 else {
                     String resultRome = translator.translateToRome(result);
                     return "Ответ: " + resultRome;
                 }
             }else return "Ответ: " + result;
-        }else return "Шаблон ввода нарушен!!!\n" + "Повторите ввод";
+        }else throw new Exception ("Шаблон ввода нарушен!!!\n");
     }
 }

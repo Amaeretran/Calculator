@@ -1,6 +1,5 @@
 class Calculator {
-
-    int calculate(String income){
+    int calculate(String income) throws Exception {
 
         String[] operands = income.split(" ");
         int operand1;
@@ -22,7 +21,7 @@ class Calculator {
             case "-" -> operand1 - operand2;
             case "*" -> operand1 * operand2;
             case "/" -> operand1 / operand2;
-            default -> 0;
+            default -> throw new Exception("Неизвестный оператор!");
         };
         return result;
     }
